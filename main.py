@@ -32,14 +32,20 @@ def check_win():
 
 
 def main():
+    counter = 0
     while True:
         board_draw()
-        winner = check_win()
-        if winner:
-            print(winner, ' выиграл')
-            break
-        player_token = input('Выберите символ X или O: ')
-        get_input(player_token)
+        if counter % 2 == 0:
+            get_input('X')
+        else:
+            get_input('O')
+        if counter > 3:
+            winner = check_win()
+            if winner:
+                board_draw()
+                print(winner, ' выиграл')
+                break
+        counter += 1
 
 
 if __name__ == '__main__':
