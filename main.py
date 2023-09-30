@@ -8,18 +8,25 @@ def board_draw():
     print('-------------')
 
 
-def get_input():
+def get_input(player_token):
     while True:
-        value = input('В какую ячейку поставить символ X: ')
+        value = input(f'В какую ячейку поставить символ {player_token}: ')
+        if not (value in '123456789'):
+            print('Ошибочный ввод. Повторите попытку.')
+            continue
         value = int(value)
-        board[value - 1] = 'X'
+        if str(board[value - 1]) in 'XO':
+            print('Эта клетка уже занята.')
+            continue
+        board[value - 1] = player_token
         break
 
 
 def main():
     while True:
         board_draw()
-        get_input()
+        player_token = input('Выберите символ X или O: ')
+        get_input(player_token)
 
 
 if __name__ == '__main__':
