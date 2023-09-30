@@ -43,8 +43,12 @@ def main():
             winner = check_win()
             if winner:
                 board_draw()
-                print(winner, ' выиграл')
+                print(winner, 'выиграл')
                 break
+        if counter == 8:
+            board_draw()
+            print('Ничья!')
+            break
         counter += 1
 
 
